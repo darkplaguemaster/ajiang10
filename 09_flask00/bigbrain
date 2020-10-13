@@ -1,0 +1,14 @@
+Team AutoKAD Andrew Jiang, Carlos "Karl" Hernandez, Dean Carey 
+SoftDev
+K09 -- Simple Path to Greatness/analyze snippet of flask code and run it 
+2020-10-07
+
+Q0: We've seen similar syntax in Java as we are initializing a Flask object with arguments __name__ which is the name of the file. In python specitically, we've seen this with `if __name__ == "__main__:"`. 
+
+Q1: '/' is used to denote going inside a directory. In URLs, it is the same case, but you render different parts of the website according to the directory you are in. We've seen this when specifying path for command lines such as cd, mv, or cp. The @ symbol is syntax for flask. 
+
+Q2: It will print to Standard Out unless you are on the application, in which case it will run on local host.  
+
+Q3: It will print __main__ if you run it with python3, and the name of the file if you use `flask run`. the return statement will print out in local host if ran correctly. 
+
+Q4: Java's dot operator invokes methods within the object's class. 
