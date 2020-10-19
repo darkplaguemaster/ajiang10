@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Team SeniorMars: Andrew Jiang, Saqif Abedin, and Carlos Hernandez -->
+<!-- SoftDev -->
+<!-- K13: Template for Success: Started working with tuples to iterate with jinja. -->
+<!-- 2020-10-19 -->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> {{ title }} </title>
+	<style type="text/css" media="screen">
+		body {
+			background-color: #10151a;
+			color: #ebdbb2;
+			text-align: center;
+		}
+
+		a {
+			text-decoration: none;
+			cursor: default;
+			color: #ebdbb2;
+		}
+
+		a:hover, a:visited {
+			cursor: default;
+			color: #98cfe5;
+		}
+
+	</style>
+</head>
+
+<body>
+	<h1>Team RainingMars: Andrew Jiang, Carlos Hernandez, and Saqif Abedin</h1>
+	<hr style="color:white">
+	<table style="margin-left:auto;margin-right:auto">
+		<caption>Random: {{ random_occ }}</caption>
+		<br>
+		<tr>
+			<th>Occupation</th>
+			<th>Percentage</th>
+		</tr>
+		<br>
+		<!-- so this just iterates through the tuple occupations that has two lists (keys, values) -->
+		{% for key, link, value in occupations %}
+		<tr>
+			<th><a href="{{ link }}" target="_blank">{{ key }}</a></th>
+			<th> {{ value }} </th>
+		</tr>
+		{% endfor %}
+		<tr>
+			<th>Total</th>
+			<th>99.8</th>
+		</tr>
+	</table>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+Team SeniorMars: Andrew Jiang, Saqif Abedin, and Carlos Hernandez
+SoftDev
+K13: Template for Success: Started working with tuples to iterate with jinja.
+2020-10-19
+
+When we created the application we noticed that you couldn't do ``for key, value in arr1, arr2`` which would work for python, but not for jinja. We found the solution was to work with tuples. Additionally, we discovered that html didn't reload like python and we had to restart flask. Finally, we found that a dictionary was not needed for the assignment and just created three lists full of the values we needed. We were just using the dictionary as a temporary storage object and memory was wasted there.
+
+When we read the egoless programming excerpt, we agreed that it basically states we should work together with as a group and make clean code. We know we can do that.
