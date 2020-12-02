@@ -1,0 +1,45 @@
+~~~Inserting New Documents-ObjectID~~~
+
+-every document has a unique _id value(required)
+-can have same data or different data if needed
+-ObjectId() is default for "_id" unless specified
+
+~~Inserting New Documents-insert() and errors~~~
+
+--drop <collection>.json removes whole collection before putting it back
+
+db.<collection>.findOne() prints random documentthat matches the query
+db.<collection>.insert() inserts new document into collection
+	response: WriteResult({"nInserted" : 1})
+db.<collection>.find() finds documents with the same parameters
+
+~~Inserting New Documents-insert() order~~
+
+db.inspections.insert([ { "test": 1 }, { "test": 2 }, { "test": 3 } ], {"ordered":false})
+	used array to insert multiple documents
+	in order that is listed unless {"ordered":false} is specified
+	if ordered, it will add until error is throwned
+	if not ordered, all document with unique is added
+
+you can create a collection by using insert on a new name
+	
+~~~Updating Documents-mongo shell~~~
+updateOne() only updates the first one found
+updateMany() updates all document that matches query
+
+ie. db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
+	$inc increases specified field by 10
+
+ie. db.zips.updateOne({ "zip": "12534" }, { "$set": { "pop": 17630 } })
+	$set sets value
+ie. db.grades.updateOne({ "student_id": 250, "class_id": 339 },
+                    { "$push": { "scores": { "type": "extra credit",
+                                             "score": 100 }
+                                }
+                     })
+	$push:{<field>:<value>} adds an element to an array field
+
+~~~Deleting Documents and Collections~~~
+deleteOne() use it for deleting with "_id" query
+deleteMany() 
+db.<collection>.drop delete given collection

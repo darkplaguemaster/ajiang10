@@ -1,0 +1,39 @@
+~~~Aggregation Framework~~~
+- another way to query data 
+- allows for modification of data including calculating
+
+group stage
+- allows for computation and reshaping
+$group an operator that takes the incoming stream of data, and siphons it into multiple distinct reservoirs
+
+~~~sort() and limit()~~~
+[200~db.zips.find({ "pop": 0 }).count()
+db.zips.find().sort({ "pop": -1 }).limit(1)
+
+cursor method
+- not applied to data
+- sort() 0 to infinity or A to Z
+- sort then limit even if your query is the other way around
+
+~~~Introduction to Indexes~~~
+- use index to create more efficient query search
+- special data structure that stores a small portion of the collection's data set in an easy to traverse form
+- use index to support your queries
+- Single field index
+	db.trips.createIndex({"birth year": 1})
+
+~~~Introduction to Data Mondeling~~~
+- data is stored in the way that it is used
+- how it will be queried
+- who will be using the application
+
+~~Upsert - Update or Insert?~~~
+- Everything in MQL that is used to locate a document in a collection can also be used to modify this document
+	db.collection.updateOne({<query to locate>},{<update>})
+- Upsert is a hybrid of update and insert, it should only be used when it is needed.
+        db.collection.updateOne({<query to locate>},{<update>},{"upsert":true})
+	- false by default
+	- if there is a match, update the matched document
+	- if there is no match, insert a new document
+- use for conditional updates
+

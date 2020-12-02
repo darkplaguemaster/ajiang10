@@ -1,0 +1,44 @@
+JSON- JavaScript Standard Object Notation
+
+Format
+	- start ends with {}
+	- key value separate by :
+	- key:value pair separated by comma
+	- "keys"(fields)
+BSON- Binary JSON
+MongoDB stores data in BSON
+	- not human readable
+
+URI string (Uniform Resource Identifier)
+
+mongodb+srv://user:password@clusterURI.mongodb.net/database
+
+
+Commands
+		Export
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mongodump --uri "<Atlas Cluster URI>"
+	exports data in BSON
+mongoexport --uri "<Atlas Cluster URI>"
+	-- collection=<collection name>
+	--out=<filename>.json
+	exports in JSON
+
+		Import
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$mongorestore --uri "<Atlas Cluster URI>"
+	--drop dump
+	imports data in BSON dump
+$mongoimport --uri "<Atlas Cluster URI>"
+	--drop=<filename>.json
+	imports data in JSON
+
+Atlas search
+	-you can search in json 
+
+$show dbs - shows all available databases
+
+Query in cli $db.zips.find({"state":"NY"})
+$it - iterate
+
+

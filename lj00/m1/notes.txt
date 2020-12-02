@@ -1,0 +1,14 @@
+Mongo DB, doesnt use SQL database (tables), stored as tocuments instead
+
+Example document:
+{
+	<field> : <value>
+}
+
+Atlas-cloud database service, manages cluster creation, run and maintain deployment
+Clusters-groups of data that store your data
+Replica set-connected MongoDB instances that are redundancies
+Instance- a single machine running a certain softare ie. MongoDB database
+
+user: m001-student
+pass: m001-mongodb-basics

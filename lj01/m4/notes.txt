@@ -1,0 +1,95 @@
+~~~Query Operators-Comparison~~~
+comparison operators
+$eq = EQual to
+$gt = Greater Than
+$gte = Greater Than or Equal to
+$neq = Not EQual to
+$lt = Less Than
+$lte = Less Than or Equal to
+
+{<field>:{<operator>: <value>}}
+
+ie. {"tripduration":{"$lte" : 70}}
+
+~~~Query Operators-Logic~~~
+
+$and matches all of query
+$or matches at least one of query
+$nor fails to match both given clauses
+$not negates query requirement(does not need array syntax)
+
+~~~Expressive Query Operator~~~
+{$expr:{<expression>}} allows us to use variable and conditional statement
+	compare fields in the same document
+$ denotes the use of an operator OR addresses a field value
+
+{ "$expr": {
+	"$and": [ 
+		{ "$gt": [ "$tripduration", 1200 ]},
+		{ "$eq": [ "$end station id", "$start station id" ]}
+                ]
+	    }
+}
+
+MQL syntax: {<field>: {<operator>: value}}
+Aggregation syntax: {<operator>: {<field>, <value>}}
+
+~~~Array Operators~~~
+$push allows us to add an element to an array 
+      turns a field into an array field if it was previously a different type
+
+Order does matter
+
+db.listingsAndReviews.find({ "amenities": {
+                                  "$size": 20,
+                                  "$all": [ "Internet", "Wifi",  "Kitchen",
+                                           "Heating", "Family/kid friendly",
+                                           "Washer", "Dryer", "Essentials",
+                                           "Shampoo", "Hangers",
+                                           "Hair dryer", "Iron",
+                                           "Laptop friendly workspace" ]
+                                         }
+                            }).pretty()
+
+{<array field> : {"$size" : <number>}} returns a cursor with all documents where the specified array field is exactly the given length
+{<array field> : { "$all": <array>}} returns a cursor with all the document in which the specified array field contains all the given elements regarless of their order in the array
+
+~~~Array Operators and Projection~~~
+
+Projection Syntax
+db.<collection>.find({<query>},{<projection>})
+use 1 and 0 to include or exclude the field but do not mix and match
+the only exception is with _id, you can set that to 0 since it is 1 by default
+ 
+$elemMatch array operator that can be used in query and projection that matches documents that contain an array field with at least one element that matches the specified query criteria
+
+db.grades.find({ "scores": { "$elemMatch": { "type": "extra credit" } }
+               }).pretty()
+
+~~~Array Operators and Sub-Documents~~~
+
+MQL uses do notation to specify the address of newsted elements in a document
+
+db.trips.findOne({ "start station location.type": "Point" })
+
+db.companies.find({ "relationships.0.person.last_name": "Zuckerberg" },
+                  { "name": 1 }).pretty()
+
+db.companies.find({ "relationships.0.person.first_name": "Mark",
+                    "relationships.0.title": { "$regex": "CEO" } },
+                  { "name": 1 }).count()
+
+
+db.companies.find({ "relationships.0.person.first_name": "Mark",
+                    "relationships.0.title": {"$regex": "CEO" } },
+                  { "name": 1 }).pretty()
+
+db.companies.find({ "relationships":
+                      { "$elemMatch": { "is_past": true,
+                                        "person.first_name": "Mark" } } },
+                  { "name": 1 }).pretty()
+
+db.companies.find({ "relationships":
+                      { "$elemMatch": { "is_past": true,
+                                        "person.first_name": "Mark" } } },
+                  { "name": 1 }).count()
