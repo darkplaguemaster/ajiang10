@@ -1,0 +1,58 @@
+/* Team 2Face -- *Benjamin Gallai, Andrew Jiang
+       SoftDev pd0
+       K18 -- CSS basics
+       2021-01-14r
+
+	 WORK FILE for CSS 	
+*/
+
+body {
+	background-color: #666666;
+	font-family: sans-serif
+}
+	
+h1 {
+	background-color: #bebebe;
+	text-align: center;
+	color: #ffffff
+}
+
+nav {
+	width: 25%;
+	float: left
+}
+
+nav h3 {
+	padding-left: 10px
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 10px
+}
+
+nav ul li a {
+	color: #ffffff;
+	text-decoration: none
+}
+
+main {
+	width: 75%;
+	float: left
+}
+
+#all {
+	background-color: #767676
+}
+
+#period {
+	color: #767676
+}
+
+#copyright {
+	background-color: #565656;
+	text-align: right;
+	color: #6E7676;
+	padding: 10px
+}
